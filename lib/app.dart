@@ -56,31 +56,46 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.medical_services),
-            label: 'Врачи',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Записи',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.photo_library),
-            label: 'Галерея',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Профиль',
-          ),
-        ],
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 8,
+              offset: Offset(0, -2),
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          backgroundColor: Colors.blue[800], // Непрозрачный фон
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white70,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.medical_services),
+              label: 'Врачи',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today),
+              label: 'Записи',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.photo_library),
+              label: 'Галерея',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Профиль',
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/appointment.dart';
+import '../../../services/image_service.dart';
 
 class AppointmentsContainer extends StatefulWidget {
   final Widget child;
@@ -15,7 +16,7 @@ class AppointmentsContainer extends StatefulWidget {
 }
 
 class _AppointmentsContainerState extends State<AppointmentsContainer> {
-  List<Appointment> _appointments = [
+  final List<Appointment> _appointments = [
     Appointment(
       id: '1',
       doctorName: 'Др. Иванов А.П.',
@@ -23,6 +24,7 @@ class _AppointmentsContainerState extends State<AppointmentsContainer> {
       date: '2024-01-20',
       time: '10:00',
       purpose: 'Консультация',
+      imageUrl: 'https://avatars.mds.yandex.net/i?id=d9ab49f0c777060524955c5b732cd5faa933f60b-5233313-images-thumbs&n=13', // Добавляем изображение
     ),
     Appointment(
       id: '2',
@@ -31,6 +33,7 @@ class _AppointmentsContainerState extends State<AppointmentsContainer> {
       date: '2024-01-21',
       time: '14:30',
       purpose: 'Обследование',
+      imageUrl: 'https://avatars.mds.yandex.net/i?id=d9ab49f0c777060524955c5b732cd5faa933f60b-5233313-images-thumbs&n=13', // Добавляем изображение
     ),
   ];
 

@@ -6,7 +6,7 @@ class AppointmentTile extends StatelessWidget {
   final Appointment appointment;
   final VoidCallback onDelete;
 
-  const AppointmentTile({super.key,
+  const AppointmentTile({
     required this.appointment,
     required this.onDelete,
   });
@@ -14,22 +14,19 @@ class AppointmentTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
       child: ListTile(
-        leading: CircleAvatar(
-          radius: 25,
-          backgroundColor: Colors.green[100],
-          child: ClipOval(
-            child: ImageService.buildNetworkImage(
-              ImageService.getAppointmentImage(appointment.id),
-              width: 50,
-              height: 50,
-            ),
-          ),
+        leading: ImageService.buildCircleNetworkImage(
+          appointment.imageUrl, // Теперь используем imageUrl из appointment
+          size: 50,
         ),
         title: Text(
           '${appointment.time} - ${appointment.doctorName}',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +37,7 @@ class AppointmentTile extends StatelessWidget {
           ],
         ),
         trailing: IconButton(
-          icon: const Icon(Icons.delete, color: Colors.red),
+          icon: Icon(Icons.delete, color: Colors.red),
           onPressed: onDelete,
         ),
       ),

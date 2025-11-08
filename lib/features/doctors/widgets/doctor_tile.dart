@@ -14,40 +14,74 @@ class DoctorTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-      child: ListTile(
-        leading: CircleAvatar(
-          radius: 25,
-          backgroundColor: Colors.blue[100],
-          child: ClipOval(
-            child: ImageService.buildNetworkImage(
-              doctor.imageUrl,
-              width: 50,
-              height: 50,
-            ),
-          ),
-        ),
-        title: Text(
-          doctor.name,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      elevation: 2,
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(12),
+        child: Row(
           children: [
-            Text('Специальность: ${doctor.specialty}'),
-            Text('Опыт: ${doctor.experience}'),
-            Row(
-              children: [
-                Icon(Icons.star, color: Colors.amber, size: 16),
-                SizedBox(width: 4),
-                Text('${doctor.rating}'),
-              ],
+            // Круглое изображение врача (упрощенная версия)
+            CircleAvatar(
+              radius: 25,
+              backgroundColor: Colors.blue[100],
+              child: ClipOval(
+                child: ImageService.buildNetworkImage(
+                  doctor.imageUrl,
+                  width: 50,
+                  height: 50,
+                ),
+              ),
+            ),
+
+            SizedBox(width: 16),
+
+            // Информация о враче
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    doctor.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    'Специальность: ${doctor.specialty}',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Text(
+                    'Опыт: ${doctor.experience}',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.amber, size: 16),
+                      SizedBox(width: 4),
+                      Text(
+                        doctor.rating,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            // Кнопка удаления
+            IconButton(
+              icon: Icon(Icons.delete, color: Colors.red),
+              onPressed: onDelete,
             ),
           ],
-        ),
-        trailing: IconButton(
-          icon: Icon(Icons.delete, color: Colors.red),
-          onPressed: onDelete,
         ),
       ),
     );

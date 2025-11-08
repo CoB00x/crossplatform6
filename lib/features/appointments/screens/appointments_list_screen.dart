@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../services/image_service.dart';
 import '../models/appointment.dart';
 import '../state/appointments_container.dart';
 import '../widgets/appointment_tile.dart';
@@ -67,6 +68,9 @@ class _AppointmentsListScreenState extends State<AppointmentsListScreen> {
                   date: _dateController.text,
                   time: _timeController.text,
                   purpose: _purposeController.text,
+                  imageUrl: ImageService.getAppointmentImage( // ДОБАВЛЯЕМ!
+                      DateTime.now().millisecondsSinceEpoch.toString()
+                  ),
                 );
                 AppointmentsContainer.of(context).addAppointment(appointment);
                 _doctorController.clear();

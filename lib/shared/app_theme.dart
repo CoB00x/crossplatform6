@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static final ThemeData lightTheme = ThemeData(
-    primarySwatch: Colors.blue,
-    scaffoldBackgroundColor: Colors.white,
-    appBarTheme: AppBarTheme(
-      backgroundColor: Colors.blue[800],
-      foregroundColor: Colors.white,
-      elevation: 2,
-    ),
-    inputDecorationTheme: InputDecorationTheme(
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+  static ThemeData get lightTheme {
+    return ThemeData(
+      primarySwatch: Colors.blue,
+      primaryColor: Colors.blue[800],
+      scaffoldBackgroundColor: Colors.white,
+
+      appBarTheme: AppBarTheme(
+        backgroundColor: Colors.blue[800],
+        foregroundColor: Colors.white,
+        elevation: 4,
+        centerTitle: true,
       ),
-      filled: true,
-      fillColor: Colors.grey[50],
-    ),
-  );
+
+      // Убираем cardTheme и inputDecorationTheme временно
+    );
+  }
 }
